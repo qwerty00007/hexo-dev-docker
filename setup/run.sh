@@ -1,10 +1,13 @@
 #!/bin/bash
 
+sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list
 # Used to install rsync for deployments
 echo "Installing rsync for deployments"
 apt-get update -y
 apt-get -y install rsync
 
+
+npm config set registry https://registry.npm.taobao.org
 # Install HEXO
 echo "Installing hexo.."
 npm install -g hexo
