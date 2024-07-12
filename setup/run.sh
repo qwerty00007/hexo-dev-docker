@@ -7,7 +7,7 @@ apt-get update -y
 apt-get -y install rsync
 
 
-npm config set registry https://registry.npm.taobao.org
+npm config set registry https://registry.npmmirror.com/
 # Install HEXO
 echo "Installing hexo.."
 npm install -g hexo
