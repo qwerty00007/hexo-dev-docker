@@ -58,6 +58,9 @@ echo ""
 echo "************************************************************"
 echo "************************************************************"
 echo "************************************************************"
+chmod 600 ~/.ssh/id_rsa 
+chmod 600 ~/.ssh/id_rsa.pub 
+chmod 700 ~/.ssh
 echo "***** Contents of public ssh key (for deploy) - *****" 
 cat ~/.ssh/id_rsa.pub 
 # Start fresh
