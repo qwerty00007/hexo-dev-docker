@@ -1,5 +1,20 @@
 #!/bin/bash
 
+if [ "$(ls -A "${HOME}"/.ssh 2>/dev/null)" ]; then 
+    echo "***** HOME .ssh directory exists and has content, continuing *****"; 
+else 
+    echo "***** HOME .ssh directory is empty, initialising ssh key and configuring known_hosts for common git repositories (github/gitlab) *****" 
+    ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -P "" 
+    ssh-keyscan github.com > ~/.ssh/known_hosts 2>/dev/null 
+    ssh-keyscan gitlab.com >> ~/.ssh/known_hosts 2>/dev/null 
+fi; 
+
+echo "***** Running git config, user = ${GIT_USER}, email = ${GIT_EMAIL} *****" 
+git config --global user.email ${GIT_EMAIL} 
+git config --global user.name ${GIT_USER} 
+
+
+
 # Check to ensure the /config volume is mounted
 if [ ! -d "/config" ]; then
   echo "Please mount a /config directory so you blog persists upon container restarts!"
@@ -43,7 +58,8 @@ echo ""
 echo "************************************************************"
 echo "************************************************************"
 echo "************************************************************"
-
+echo "***** Contents of public ssh key (for deploy) - *****" 
+cat ~/.ssh/id_rsa.pub 
 # Start fresh
 hexo clean --cwd /config
 hexo server --cwd /config -p 8080 --debug --draft
