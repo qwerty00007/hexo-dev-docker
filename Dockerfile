@@ -2,7 +2,7 @@ FROM ghcr.io/qwerty00007/node:main
 
 ENV HOME="/hexo" \
     PUID=1000 \
-    PGID=100 
+    PGID=1000 
 
 ENV GIT_USER="hexo"
 ENV GIT_EMAIL="hexo@gmail.com"
@@ -12,8 +12,8 @@ RUN  apt-get update -y \
 && npm config set registry https://registry.npmmirror.com/ \
 && npm install -g hexo
 
-RUN groupadd -r hexo -g 100 \
-&& useradd -r hexo -g hexo -d ${HOME} -s /bin/bash -u 1000
+RUN groupadd -r hexo -g ${PGID} \
+&& useradd -r hexo -g hexo -d ${HOME} -s /bin/bash -u ${PUID}
 
 
 
