@@ -11,6 +11,7 @@ RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
 COPY setup /setup
 
 RUN chown -R hexo:hexo /setup
+RUN chown -R hexo:hexo /config
 USER hexo
 # Start the server
 CMD ["/bin/bash", "/setup/run.sh"]
