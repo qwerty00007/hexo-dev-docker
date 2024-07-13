@@ -1,5 +1,8 @@
 FROM node:19
 
+ENV PUID=1000 \
+    PGID=1000
+
 RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
 && apt-get update -y \
 && apt-get -y install rsync \
