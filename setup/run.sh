@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$(ls -A "${HOME}"/.ssh 2>/dev/null)" ]; then 
+if [ "$(ls -A ~/.ssh 2>/dev/null)" ]; then 
     echo "***** HOME .ssh directory exists and has content, continuing *****"; 
 else 
     echo "***** HOME .ssh directory is empty, initialising ssh key and configuring known_hosts for common git repositories (github/gitlab) *****" 
