@@ -7,9 +7,9 @@ RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
 && apt-get update -y \
 && apt-get -y install rsync \
 && npm config set registry https://registry.npmmirror.com/ \
-&& npm install -g hexo \
-&& groupadd -r hexo -g ${PGID} \
-&& useradd -r hexo -g hexo -u ${PUID}
+&& npm install -g hexo
+RUN groupadd -r hexo -g 1000 \
+&& useradd -r hexo -g hexo -u 1000
 
 COPY setup /setup
 
