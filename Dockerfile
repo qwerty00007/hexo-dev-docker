@@ -7,13 +7,14 @@ ENV HOME="/hexo" \
 ENV GIT_USER="hexo"
 ENV GIT_EMAIL="hexo@gmail.com"
 
-RUN apt-get update -y \
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
+&& apt-get update -y \
 && apt-get -y install rsync \
 && npm config set registry https://registry.npmmirror.com/ \
 && npm install -g hexo
 
-RUN groupadd -r hexo -g ${PGID} \
-&& useradd -r hexo -g hexo -d ${HOME} -s /bin/bash -u ${PUID}
+RUN groupadd -r hexo -g 100 \
+&& useradd -r hexo -g hexo -d ${HOME} -s /bin/bash -u 1000
 
 
 
