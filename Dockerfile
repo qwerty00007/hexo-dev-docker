@@ -20,4 +20,4 @@ RUN groupadd -r hexo -g ${PGID} \
 COPY setup /setup
 USER hexo
 # Start the server
-CMD ["/bin/bash", "/setup/run.sh"]
+CMD ["/bin/sh", "/setup/run.sh"]

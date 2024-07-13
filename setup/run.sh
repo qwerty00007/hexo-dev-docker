@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ "$(ls -A ~/.ssh 2>/dev/null)" ]; then 
     echo "***** HOME .ssh directory exists and has content, continuing *****"; 
