@@ -7,8 +7,7 @@ ENV HOME="/hexo" \
 ENV GIT_USER="hexo"
 ENV GIT_EMAIL="hexo@gmail.com"
 
-RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
-&& apt-get update -y \
+RUN  apt-get update -y \
 && apt-get -y install rsync \
 && npm config set registry https://registry.npmmirror.com/ \
 && npm install -g hexo
