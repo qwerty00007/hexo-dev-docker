@@ -7,6 +7,10 @@ ENV HOME="/hexo" \
 ENV GIT_USER="hexo"
 ENV GIT_EMAIL="hexo@gmail.com"
 
+RUN usermod -u 911 node \
+&& groupmod -g 911 node \
+&& chown node:node /home/node
+
 RUN  apt-get update -y \
 && apt-get -y install rsync \
 && npm config set registry https://registry.npmmirror.com/ \
@@ -14,9 +18,7 @@ RUN  apt-get update -y \
 
 RUN groupadd -r hexo -g ${PGID} \
 && useradd -r hexo -g hexo -d ${HOME} -s /bin/bash -u ${PUID}
-RUN usermod -u 911 node \
-&& groupmod -g 911 node \
-&& chown node:node /home/node
+
 
 COPY setup /setup
 USER hexo
