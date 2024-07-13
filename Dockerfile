@@ -16,6 +16,8 @@ RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
 RUN groupadd -r hexo -g ${PGID} \
 && useradd -r hexo -g hexo -d ${HOME} -s /bin/bash -u ${PUID}
 
+
+
 COPY setup /setup
 USER hexo
 # Start the server
