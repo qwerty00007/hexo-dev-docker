@@ -1,8 +1,8 @@
 FROM node:19
 
 ENV HOME="/hexo" \
-    PUID=1001 \
-    PGID=1000 
+    PUID=3000 \
+    PGID=3000 
 
 ENV GIT_USER="hexo"
 ENV GIT_EMAIL="hexo@gmail.com"
