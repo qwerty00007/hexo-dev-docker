@@ -1,7 +1,7 @@
-FROM ghcr.io/qwerty00007/node:main
+FROM node:19
 
 ENV HOME="/hexo" \
-    PUID=1000 \
+    PUID=1001 \
     PGID=1000 
 
 ENV GIT_USER="hexo"
@@ -18,5 +18,6 @@ RUN groupadd -r hexo -g ${PGID} \
 
 
 COPY setup /setup
+USER hexo
 # Start the server
 CMD ["/bin/sh", "/setup/run.sh"]
