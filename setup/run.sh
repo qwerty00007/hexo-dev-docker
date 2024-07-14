@@ -5,7 +5,7 @@ useradd -r hexo -g hexo -d ${HOME} -s /bin/bash -u ${PUID}
 # 更改文件权限
 chown -R hexo:hexo \
     "${HOME}" \
-    /config \
+    /config
 su hexo
 
 if [ "$(ls -A ~/.ssh 2>/dev/null)" ]; then 
