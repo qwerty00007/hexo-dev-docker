@@ -16,11 +16,6 @@ RUN  apt-get update -y \
 && npm config set registry https://registry.npmmirror.com/ \
 && npm install -g hexo
 
-RUN groupadd -r hexo -g ${PGID} \
-&& useradd -r hexo -g hexo -d ${HOME} -s /bin/bash -u ${PUID}
-
-
 COPY setup /setup
-USER hexo
 # Start the server
 CMD ["/bin/sh", "/setup/run.sh"]
