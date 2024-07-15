@@ -17,5 +17,7 @@ RUN  apt-get update -y \
 && npm install -g hexo
 
 COPY setup /setup
+CMD ["/bin/sh", "/setup/pre-run.sh"]
+USER hexo
 # Start the server
 CMD ["/bin/sh", "/setup/run.sh"]
