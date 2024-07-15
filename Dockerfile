@@ -14,9 +14,9 @@ RUN usermod -u 911 node \
 RUN  apt-get update -y \
 && apt-get -y install rsync \
 && npm config set registry https://registry.npmmirror.com/ \
-&& npm install -g hexo
-&& groupadd -r hexo -g 1001 \
-&& useradd -r hexo -g hexo -d ${HOME} -s /bin/sh -u 1001
+&& npm install -g hexo \
+&& groupadd -r hexo -g 1000 \
+&& useradd -r hexo -g hexo -d ${HOME} -s /bin/sh -u 1000
 
 COPY setup /setup
 CMD ["/bin/sh", "/setup/pre-run.sh"]
