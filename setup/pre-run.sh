@@ -1,7 +1,7 @@
 #!/bin/sh
-echo "***** add user hexo and group hexo *****";
-groupadd -r hexo -g ${PGID} 
-useradd -r hexo -g hexo -d ${HOME} -s /bin/bash -u ${PUID}
+echo "***** change id *****";
+groupmod -o -g "${PGID}" hexo
+usermod -o -u "${PUID}" hexo
 mkdir /hexo/.ssh
 # 更改文件权限
 
